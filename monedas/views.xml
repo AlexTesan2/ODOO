@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="moneda_action" model="ir.actions.act_window"><!--Permite interaccionar con el menu item-->
+		<field name="name">Action moneda</field>
+		<field name="res_model">m.moneda</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="ejemplar_action" model="ir.actions.act_window">
+		<field name="name">Action ejemplar</field>
+		<field name="res_model">m.ejemplar</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="molde_action" model="ir.actions.act_window">
+		<field name="name">Action molde</field>
+		<field name="res_model">m.molde</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="modelo_action" model="ir.actions.act_window">
+		<field name="name">Action modelo</field>
+		<field name="res_model">m.modelo</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="modelo_metal_action" model="ir.actions.act_window">
+		<field name="name">Action modelo_metal</field>
+		<field name="res_model">m.modelo_metal</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="metal_action" model="ir.actions.act_window">
+		<field name="name">Action metal</field>
+		<field name="res_model">m.metal</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+    <record id="moneda_form" model="ir.ui.view"><!--afecta a la hora de añadir un new -->
+		<field name="name">moneda.form</field>
+		<field name="model">m.moneda</field>
+		<field name="arch" type="xml">
+			<form string="moneda">
+				<sheet>
+					<group>
+						<field name="cod" />
+						<field name="es_variante" />
+						<field name="desc_error" />
+						<field name="ejemplar" />
+						<field name="color" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="ejemplar_form" model="ir.ui.view">
+		<field name="name">ejemplar.form</field>
+		<field name="model">m.ejemplar</field>
+		<field name="arch" type="xml">
+			<form string="ejemplar">
+				<sheet>
+					<group>
+						<field name="cod" />
+						<field name="num_correlativo" />
+						<field name="fecha_compra" />
+						<field name="precio_compra" />
+						<field name="fecha_venta" />
+						<field name="precio_venta" />
+						<field name="moneda" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="moneda_tree" model="ir.ui.view"><!--afecta a la lista-->
+		<field name="name">moneda.tree</field>
+		<field name="model">m.moneda</field>
+		<field name="arch" type="xml">
+			<tree string="moneda">
+				<field name="cod" />
+				<field name="es_variante" />
+				<field name="desc_error" />
+				<field name="ejemplar" />
+				<field name="color" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="ejemplar_tree" model="ir.ui.view">
+		<field name="name">ejemplar.tree</field>
+		<field name="model">m.ejemplar</field>
+		<field name="arch" type="xml">
+			<tree string="ejemplar">
+				<field name="cod" />
+				<field name="num_correlativo" />
+				<field name="fecha_compra" />
+				<field name="precio_compra" />
+				<field name="fecha_venta" />
+				<field name="precio_venta" />
+				<field name="moneda"/><!--widget="many2many_tags"-->
+			</tree>
+		</field>
+	</record>
+
+	<record id="molde_tree" model="ir.ui.view">
+		<field name="name">molde.tree</field>
+		<field name="model">m.molde</field>
+		<field name="arch" type="xml">
+			<tree string="molde">
+				<field name="cod" />
+				<field name="anyo_acunyacion" />
+				<field name="descripcion" />
+				<field name="fecha_estrellas" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="modelo_tree" model="ir.ui.view">
+		<field name="name">modelo.tree</field>
+		<field name="model">m.modelo</field>
+		<field name="arch" type="xml">
+			<tree string="modelo">
+				<field name="cod" />
+				<field name="unidad" />
+				<field name="diametro" />
+				<field name="peso" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="modelo_metal_tree" model="ir.ui.view">
+		<field name="name">modelo_metal.tree</field>
+		<field name="model">m.modelo_metal</field>
+		<field name="arch" type="xml">
+			<tree string="modelo_metal">
+				<field name="proporcion" />
+				<field name="ley" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="metal_tree" model="ir.ui.view">
+		<field name="name">metal.tree</field>
+		<field name="model">m.metal</field>
+		<field name="arch" type="xml">
+			<tree string="metal">
+				<field name="nombre" />
+			</tree>
+		</field>
+	</record>
+
+    <menuitem
+		id="monedas"
+		name="monedas"
+		sequence="10"/>
+
+	<menuitem
+		id="moneda"
+		name="Moneda"
+		action="moneda_action"
+		parent="monedas"
+		sequence="10"/>
+	<menuitem
+		id="ejemplar"
+		name="Ejemplar"
+		action="ejemplar_action"
+		parent="monedas"
+		sequence="10"/>
+	<menuitem
+		id="molde"
+		name="Molde"
+		action="molde_action"
+		parent="monedas"
+		sequence="10"/>
+	<menuitem
+		id="modelo"
+		name="modelo"
+		action="modelo_action"
+		parent="monedas"
+		sequence="10"/>
+	<menuitem
+		id="modelo_metal"
+		name="modelo_metal"
+		action="modelo_metal_action"
+		parent="monedas"
+		sequence="10"/>
+	<menuitem
+		id="metal"
+		name="metal"
+		action="metal_action"
+		parent="monedas"
+		sequence="10"/>
+
+	<menuitem
+		id="ef"
+		name="holaDavid"
+		action="metal_action"
+		parent="monedas"
+		sequence="10"/>
+</odoo>
