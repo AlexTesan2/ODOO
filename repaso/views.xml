@@ -18,6 +18,24 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
+	<record id="colores_action" model="ir.actions.act_window">
+		<field name="name">Action colores</field>
+		<field name="res_model">pr.colores</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="artes_action" model="ir.actions.act_window">
+		<field name="name">Action arte</field>
+		<field name="res_model">pr.arte</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="canica_action" model="ir.actions.act_window">
+		<field name="name">Action canica</field>
+		<field name="res_model">pr.canica</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 
 
     <record id="cliente_form" model="ir.ui.view"><!--afecta a la hora de añadir un new -->
@@ -70,13 +88,38 @@
 	</record>
 
 	<record id="view_proveedor_tree" model="ir.ui.view" >
-		<field name="name">pr.tree</field>
+		<field name="name">proveedor.tree</field>
 		<field name="model">pr.proveedor</field>
 		<field name="arch" type="xml">
 			<tree>
 				<field name="name"/>
 				<field name="cif"/>
 				<field name="titular"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_color_tree" model="ir.ui.view">
+		<field name="name">colores.tree</field>
+		<field name="model">pr.colores</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="color" />
+				<field name="color_secundario" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_colorblind_tree" model="ir.ui.view">
+		<field name="name">arte.tree</field>
+		<field name="model">pr.arte</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="color" />
+				<field name="color_secundario" />
+				<field name="tipo_arte" />
 			</tree>
 		</field>
 	</record>
@@ -93,7 +136,7 @@
 			</calendar>
 		</field>
 	</record>
-
+	
 
 
 	<record id="vendedor_search" model="ir.ui.view"><!--buscador-->
@@ -104,11 +147,13 @@
 				<field name="name" />
 				<field name="company" />
 				<field name="fecha_incorporacion" />
+
 				<!--Agrupar vendedores por empresa-->
 				<group string="Zona de agrupamientos">
 					<filter name="agrupar por empresa" string="Agrupar por empresa" 
 						context="{'group_by': 'company'}" />
 				</group>
+				
 				<!--(filtro) que emplados han sido despedidos y por que empresa-->
 				<filter name="despedidos" string="Despedidos" 
 					domain="[('fecha_despido', '&lt;', context_today())]" /><!--,datetime.date.today())]"/>-->
@@ -140,6 +185,27 @@
 		id="proveedor"
 		name="proveedor"
 		action="proveedor_action"
+		parent="pasoAPaso"
+		sequence="10"/>
+
+	<menuitem
+		id="colores"
+		name="colores"
+		action="colores_action"
+		parent="pasoAPaso"
+		sequence="10"/>
+
+	<menuitem
+		id="artes"
+		name="artes"
+		action="artes_action"
+		parent="pasoAPaso"
+		sequence="10"/>
+	
+	<menuitem
+		id="canicas"
+		name="Canica"
+		action="canica_action"
 		parent="pasoAPaso"
 		sequence="10"/>
 

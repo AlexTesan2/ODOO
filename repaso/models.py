@@ -44,3 +44,46 @@ class proveedor(models.Model):
     cif = fields.Char(required=True)
     titular = fields.Char()
     #cliente = fields.Many2many(comodel_name='pr.cliente', string='cliente')
+
+#Herencia:
+
+# imaginad que esta en otro modulo
+class Colores(models.Model):
+    _name = 'pr.colores'
+    name = fields.Char(required=True, string='Nombre')
+    color = fields.Selection(selection=[('rojo','Color rojo'), 
+                                        ('verde','Color verde'), 
+                                        ('azul',"Color Azul")], 
+                                        required=True, string='Color RGB')
+
+class AdicionColorida(models.Model):
+    # NO genera una new tabla en la bas e de datos; no tiene _name
+    # Solamente extiende la tabla de la que hereda
+    _inherit = 'pr.colores'
+    color_secundario = fields.Selection(selection=[('cyan','Color cyan'), 
+                                            ('magenta','Color magenta'), 
+                                            ('yellow',"Color yellow")], 
+                                            required=True, string='AdicionColorida')
+
+class Artes(models.Model):
+    # SI genera una new tabla en la bas e de datos; tiene _name
+    # Tendra todos los campos de la tabla que hereda, inclidos los de AdicionColorida, mas los propios
+    _inherit = 'pr.colores'
+    _name = 'pr.arte'
+    tipo_arte = fields.Selection(selection=[('esc','Escultura'),
+                                                ('pin','Pintura'), 
+                                                ('mu',"Musica")],
+                                                required=True, string='Arte')
+
+
+# Herencia de modulo
+
+class canicas(models.Model):
+    _inherit = 'm.modelo'
+    _name = 'pr.canica'
+    color_canica = fields.Selection(selection=[('a','Color cyan'), 
+                                                ('r','Color magenta'), 
+                                                ('v',"Color verde")], 
+                                                required=True, string='color_canica')
+    fabricante = fields.Char()
+    unidades_vendidas = fields.Integer()
