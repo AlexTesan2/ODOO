@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mascota_action" model="ir.actions.act_window"><!--Permite interaccionar con el menu item-->
+		<field name="name">Action mascota</field>
+		<field name="res_model">vet.mascota</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="dueno_action" model="ir.actions.act_window">
+		<field name="name">Action dueno</field>
+		<field name="res_model">vet.dueno</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="mascota_tree" model="ir.ui.view"><!--afecta a la lista-->
+		<field name="name">mascota.tree</field>
+		<field name="model">vet.mascota</field>
+		<field name="arch" type="xml">
+			<tree string="mascota">
+				<field name="cod" />
+				<field name="nombre" />
+				<field name="especie" />
+				<field name="sexo" />
+				<field name="edad" />
+				<field name="castrado" />
+				<field name="vivo" />
+				<field name="dueno" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="dueno_tree" model="ir.ui.view">
+		<field name="name">dueno.tree</field>
+		<field name="model">vet.dueno</field>
+		<field name="arch" type="xml">
+			<tree string="dueno">
+				<field name="cod" />
+				<field name="nombre" />
+				<field name="apellidos" />
+				<field name="telefono" />
+				<field name="dni" />
+				<field name="mascotas" />
+			</tree>
+		</field>
+	</record>
+
+    <menuitem
+		id="veterinaria"
+		name="veterinaria"
+		sequence="10"/>
+
+	<menuitem
+		id="mascota"
+		name="Mascotas"
+		action="mascota_action"
+		parent="veterinaria"
+		sequence="10"/>
+
+	<menuitem
+		id="dueno"
+		name="Dueños"
+		action="dueno_action"
+		parent="veterinaria"
+		sequence="10"/>
+</odoo>
