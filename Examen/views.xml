@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="cerveza_action" model="ir.actions.act_window">
+		<field name="name">Action cerveza</field>
+		<field name="res_model">ex.cerveza</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="lote_produccion_action" model="ir.actions.act_window">
+		<field name="name">Action lote_produccion</field>
+		<field name="res_model">ex.lote_produccion</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="ingrediente_action" model="ir.actions.act_window">
+		<field name="name">Action ingrediente</field>
+		<field name="res_model">ex.ingrediente</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="empaquetado_action" model="ir.actions.act_window">
+		<field name="name">Action empaquetado</field>
+		<field name="res_model">ex.empaquetado</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="distribuidor_action" model="ir.actions.act_window">
+		<field name="name">Action distribuidor</field>
+		<field name="res_model">ex.distribuidor</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+	<record id="cerveza_tree" model="ir.ui.view">
+		<field name="name">cerveza.tree</field>
+		<field name="model">ex.cerveza</field>
+		<field name="arch" type="xml">
+			<tree string="cerveza">
+				<field name="tipo" />
+				<field name="nombre" />
+				<field name="contenido_de_alcohol" />
+				<field name="precio_por_unidad" />
+				<field name="volumen_por_unidad_ml" />
+				<field name="Disponible" />
+				<field name="ingredientes" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="cerveza_form" model="ir.ui.view">
+		<field name="name">cerveza.form</field>
+		<field name="model">ex.cerveza</field>
+		<field name="arch" type="xml">
+			<form string="cerveza">
+				<sheet>
+					<group>
+						<field name="tipo" />
+						<field name="nombre" />
+						<field name="contenido_de_alcohol" />
+						<field name="precio_por_unidad" />
+						<field name="volumen_por_unidad_ml" />
+						<field name="Disponible" />
+						<field name="ingredientes" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="lote_produccion_tree" model="ir.ui.view">
+		<field name="name">lote_produccion.tree</field>
+		<field name="model">ex.lote_produccion</field>
+		<field name="arch" type="xml">
+			<tree string="lote_produccion">
+				<field name="cerveza" />
+				<field name="fecha_inicio_produccion" />
+				<field name="fecha_estimada_finalizacion" />
+				<field name="cantidad_producida" />
+				<field name="estado" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="lote_produccion_form" model="ir.ui.view">
+		<field name="name">lote_produccion.form</field>
+		<field name="model">ex.lote_produccion</field>
+		<field name="arch" type="xml">
+			<form string="lote_produccion">
+				<sheet>
+					<group>
+						<field name="cerveza" />
+						<field name="fecha_inicio_produccion" />
+						<field name="fecha_estimada_finalizacion" />
+						<field name="cantidad_producida" />
+						<field name="estado" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="ingrediente_tree" model="ir.ui.view">
+		<field name="name">ingrediente.tree</field>
+		<field name="model">ex.ingrediente</field>
+		<field name="arch" type="xml">
+			<tree string="ingrediente">
+				<field name="nombre" />
+				<field name="cantidad_disponible" />
+				<field name="tipo" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="ingrediente_form" model="ir.ui.view">
+		<field name="name">ingrediente.form</field>
+		<field name="model">ex.ingrediente</field>
+		<field name="arch" type="xml">
+			<form string="ingrediente">
+				<sheet>
+					<group>
+						<field name="nombre" />
+						<field name="cantidad_disponible" />
+						<field name="tipo" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="empaquetado_tree" model="ir.ui.view">
+		<field name="name">empaquetado.tree</field>
+		<field name="model">ex.empaquetado</field>
+		<field name="arch" type="xml">
+			<tree string="empaquetado">
+				<field name="lote_de_produccion" />
+				<field name="fecha_empaquetado" />
+				<field name="cantidad_empaquetada" />
+				<field name="lote_produccion" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="empaquetado_form" model="ir.ui.view">
+		<field name="name">empaquetado.form</field>
+		<field name="model">ex.empaquetado</field>
+		<field name="arch" type="xml">
+			<form string="empaquetado">
+				<sheet>
+					<group>
+						<field name="lote_de_produccion" />
+						<field name="fecha_empaquetado" />
+						<field name="cantidad_empaquetada" />
+						<field name="lote_produccion" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="distribuidor_tree" model="ir.ui.view">
+		<field name="name">distribuidor.tree</field>
+		<field name="model">ex.distribuidor</field>
+		<field name="arch" type="xml">
+			<tree string="distribuidor">
+				<field name="nombre" />
+				<field name="direccion" />
+				<field name="telefono_contacto" />
+				<field name="cervezas_suministradas" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="distribuidor_form" model="ir.ui.view">
+		<field name="name">distribuidor.form</field>
+		<field name="model">ex.distribuidor</field>
+		<field name="arch" type="xml">
+			<form string="distribuidor">
+				<sheet>
+					<group>
+						<field name="nombre" />
+						<field name="direccion" />
+						<field name="telefono_contacto" />
+						<field name="cervezas_suministradas" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+
+    <menuitem
+		id="examen"
+		name="examen"
+		sequence="10"/>
+
+	<menuitem
+		id="cerveza"
+		name="cerveza"
+		action="cerveza_action"
+		parent="examen"
+		sequence="10"/>
+	
+	<menuitem
+		id="lote_produccion"
+		name="lote_produccion"
+		action="lote_produccion_action"
+		parent="examen"
+		sequence="10"/>
+	
+	<menuitem
+		id="ingrediente"
+		name="ingrediente"
+		action="ingrediente_action"
+		parent="examen"
+		sequence="10"/>
+	
+	<menuitem
+		id="empaquetado"
+		name="empaquetado"
+		action="empaquetado_action"
+		parent="examen"
+		sequence="10"/>
+	
+	<menuitem
+		id="distribuidor"
+		name="distribuidor"
+		action="distribuidor_action"
+		parent="examen"
+		sequence="10"/>
+</odoo>
