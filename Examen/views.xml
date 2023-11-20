@@ -9,7 +9,7 @@
 	<record id="lote_produccion_action" model="ir.actions.act_window">
 		<field name="name">Action lote_produccion</field>
 		<field name="res_model">ex.lote_produccion</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">tree,form,calendar</field>
 	</record>
 
 	<record id="ingrediente_action" model="ir.actions.act_window">
@@ -21,7 +21,7 @@
 	<record id="empaquetado_action" model="ir.actions.act_window">
 		<field name="name">Action empaquetado</field>
 		<field name="res_model">ex.empaquetado</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">tree,form,calendar</field>
 	</record>
 
 	<record id="distribuidor_action" model="ir.actions.act_window">
@@ -99,6 +99,18 @@
 		</field>
 	</record>
 
+	<record id="lote_produccion_calendar" model="ir.ui.view">
+		<field name="name">lote_produccion.calendar</field>
+		<field name="model">ex.lote_produccion</field>
+		<field name="arch" type="xml">
+			<calendar string="lote_produccion" date_start="fecha_inicio_produccion" date_stop="fecha_estimada_finalizacion">
+				<field name="cerveza" />
+				<field name="cantidad_producida" />
+				<field name="estado" />
+			</calendar>
+		</field>
+	</record>
+
 	<record id="ingrediente_tree" model="ir.ui.view">
 		<field name="name">ingrediente.tree</field>
 		<field name="model">ex.ingrediente</field>
@@ -154,6 +166,17 @@
 					</group>
 				</sheet>
 			</form>
+		</field>
+	</record>
+
+	<record id="empaquetado_calendar" model="ir.ui.view">
+		<field name="name">empaquetado.calendar</field>
+		<field name="model">ex.empaquetado</field>
+		<field name="arch" type="xml">
+			<calendar string="empaquetado" date_start="fecha_empaquetado" date_stop="fecha_empaquetado">
+				<field name="lote_de_produccion" />
+				<field name="cantidad_empaquetada" />
+			</calendar>
 		</field>
 	</record>
 
