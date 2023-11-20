@@ -77,6 +77,12 @@
 				<field name="contenido_de_alcohol" />
 				<field name="precio_por_unidad" />
 				<field name="volumen_por_unidad_ml" />
+
+				<filter name="agotadas" string="agotadas" 
+					domain="[('Disponible', '=', False)]" />
+
+				<filter name="disponibles" string="disponibles" 
+					domain="[('Disponible', '=', True)]" />
 			</search>
 		</field>
 	</record>
