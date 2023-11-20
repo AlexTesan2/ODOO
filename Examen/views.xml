@@ -67,6 +67,20 @@
 		</field>
 	</record>
 
+	<record id="cerveza_search" model="ir.ui.view">
+		<field name="name">cerveza.search</field>
+		<field name="model">ex.cerveza</field>
+		<field name="arch" type="xml">
+
+			<search string="vendedor">
+				<field name="tipo" />
+				<field name="contenido_de_alcohol" />
+				<field name="precio_por_unidad" />
+				<field name="volumen_por_unidad_ml" />
+			</search>
+		</field>
+	</record>
+
 	<record id="lote_produccion_tree" model="ir.ui.view">
 		<field name="name">lote_produccion.tree</field>
 		<field name="model">ex.lote_produccion</field>

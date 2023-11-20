@@ -12,6 +12,16 @@ class cerveza(models.Model):
     lote_produccion=fields.One2many(comodel_name='ex.lote_produccion', inverse_name='cerveza')
     ingredientes=fields.Many2many(comodel_name='ex.ingrediente', string='ingredientes')
 
+    @api.constrains('contenido_de_alcohol', 'nombre')
+    def _porciento(self):
+        for record in self:
+            if record.contenido_de_alcohol < 0:
+                raise models.ValidationError("En una bebida, el porcentaje no puede ser menor de cero")
+            elif record.contenido_de_alcohol > 100:
+                raise models.ValidationError("En una bebida, el porcentaje, no puede ser mas de 100 ")
+            else:
+                pass
+
 class lote_produccion (models.Model):
     _name = 'ex.lote_produccion'
     cerveza= fields.Many2one(comodel_name='ex.cerveza', string='cerveza')
@@ -35,7 +45,6 @@ class ingrediente (models.Model):
                                     ('ot'," Otro")], 
                                     required=True, string='Tipo Ingrediente')
 
-#Lote de Producción -> el empaquetado está asociado a uno o varios lotes de producción
 
 class empaquetado (models.Model):
     _name = 'ex.empaquetado'
