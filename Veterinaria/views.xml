@@ -12,6 +12,12 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
+	<record id="superdueno_action" model="ir.actions.act_window">
+		<field name="name">Action superdueno</field>
+		<field name="res_model">vet.superdueno</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 	<record id="mascota_tree" model="ir.ui.view"><!--afecta a la lista-->
 		<field name="name">mascota.tree</field>
 		<field name="model">vet.mascota</field>
@@ -44,6 +50,24 @@
 		</field>
 	</record>
 
+	<record id="superdueno_tree" model="ir.ui.view">
+		<field name="name">superdueno.tree</field>
+		<field name="model">vet.superdueno</field>
+		<field name="arch" type="xml">
+			<tree string="superdueno">
+				<field name="cod" />
+				<field name="nombre" />
+				<field name="apellidos" />
+				<field name="telefono" />
+				<field name="dni" />
+				<field name="mascotas" />
+				<field name="masa" />
+				<field name="volumen" />
+				<field name="densidad" />
+			</tree>
+		</field>
+	</record>
+
     <menuitem
 		id="veterinaria"
 		name="veterinaria"
@@ -60,6 +84,13 @@
 		id="dueno"
 		name="Dueños"
 		action="dueno_action"
+		parent="veterinaria"
+		sequence="10"/>
+
+	<menuitem
+		id="superdueno"
+		name="Super_Dueños"
+		action="superdueno_action"
 		parent="veterinaria"
 		sequence="10"/>
 </odoo>

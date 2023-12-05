@@ -25,3 +25,18 @@ class dueno(models.Model):
     dni = fields.Char()
     commentario = fields.Char()
     mascotas= fields.One2many(comodel_name='vet.mascota', inverse_name='dueno')
+
+class super_dueno(models.Model):
+    _inherit = 'vet.dueno'
+    _name = 'vet.superdueno'
+    masa = fields.Integer()
+    volumen = fields.Integer()
+    densidad = fields.Integer(compute='_calculo_densidad', store=True)
+
+    @api.depends('masa', 'volumen')
+    def _calculo_densidad(self):
+        for record in self:
+            if record.volumen > 0:
+                record.densidad = record.masa / record.volumen 
+            else:
+                record.densidad = 0
